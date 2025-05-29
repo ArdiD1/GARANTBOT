@@ -3,9 +3,11 @@ import sqlite3
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.utils import executor
+import os
 
-API_TOKEN = '7686571543:AAFGahVHwioS0LNmN2dWsDJvZXQ5lk3WTk0'
-ADMIN_ID = 5141765726
+API_TOKEN = os.getenv("BOT_TOKEN")
+ADMIN_ID = int(os.getenv("ADMIN_ID"))
+
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
