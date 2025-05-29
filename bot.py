@@ -2,26 +2,9 @@ import os
 import sqlite3
 from aiogram import Bot, Dispatcher, types
 from aiogram.utils import executor
-import threading
 
-from http.server import BaseHTTPRequestHandler, HTTPServer
-
-class KeepAliveHandler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.end_headers()
-        self.wfile.write(b'Bot is running!')
-
-def run_keep_alive():
-    server = HTTPServer(('0.0.0.0', 8080), KeepAliveHandler)
-    server.serve_forever()
-
-threading.Thread(target=run_keep_alive, daemon=True).start()
-
-
-API_TOKEN = os.getenv("BOT_TOKEN")
-ADMIN_ID = int(os.getenv("ADMIN_ID"))  # Если не нужен — можно удалить эту строку
-
+API_TOKEN = 7686571543:AAFGahVHwioS0LNmN2dWsDJvZXQ5lk3WTk0
+ADMIN_ID = 5141765726
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
