@@ -63,11 +63,10 @@ async def confirm_topup(msg: types.Message):
 @dp.message_handler(commands=["deal"])
 async def create_deal(msg: types.Message):
     await msg.reply(
-await msg.reply(
-    "Отправьте тег продавца (без @) и сумму, например:\n"
-    "`sellerusername 25.5`",
-    parse_mode="Markdown"
-)
+        "Отправьте тег продавца (без @) и сумму, например:\n"
+        "`sellerusername 25.5`",
+        parse_mode="Markdown"
+    )
 
 @dp.message_handler(lambda msg: len(msg.text.split()) == 2)
 async def process_deal(msg: types.Message):
