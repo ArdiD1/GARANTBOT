@@ -61,8 +61,11 @@ async def confirm_topup(msg: types.Message):
 
 @dp.message_handler(commands=["deal"])
 async def create_deal(msg: types.Message):
-    await msg.reply("Отправьте тег продавца (без @) и сумму, например:
-`sellerusername 25.5`", parse_mode="Markdown")
+    await msg.reply(
+        "Отправьте тег продавца (без @) и сумму, например:
+"
+        "`sellerusername 25.5`", parse_mode="Markdown"
+    )
 
 @dp.message_handler(lambda msg: len(msg.text.split()) == 2)
 async def process_deal(msg: types.Message):
@@ -70,9 +73,6 @@ async def process_deal(msg: types.Message):
         seller_username, amount = msg.text.split()
         amount = float(amount)
         buyer_id = msg.from_user.id
-
-        # Получаем ID продавца по username — в реальности это требует API-запроса
-        # Здесь просто создаём заглушку: seller_id = hash(username) % 100000
         seller_id = abs(hash(seller_username)) % 100000000
 
         if get_balance(buyer_id) < amount:
